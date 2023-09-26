@@ -7,6 +7,9 @@
 console.log('--------------------------------------------------------------------');
 console.log('Задание 1');
 console.log('--------------------------------------------------------------------');
+const arr = [1, 5, 7, 9];
+
+console.log(Math.min(...arr));
 
 // --------------------------------------------------------------------
 // Задание 2
@@ -21,6 +24,28 @@ console.log('-------------------------------------------------------------------
 console.log('Задание 2');
 console.log('--------------------------------------------------------------------');
 
+function createCounter(counter) {
+  return {
+    increment: () => {
+      counter++;
+    },
+    decrement: () => {
+      counter--;
+    },
+    result: () => {
+      return counter;
+    },
+  };
+}
+
+const methodObj = createCounter(9);
+methodObj.increment();
+methodObj.increment();
+methodObj.increment();
+console.log(methodObj.result());
+methodObj.decrement();
+console.log(methodObj.result());
+
 // --------------------------------------------------------------------
 // Задание 3
 
@@ -32,5 +57,15 @@ console.log('-------------------------------------------------------------------
 console.log('--------------------------------------------------------------------');
 console.log('Задание 3');
 console.log('--------------------------------------------------------------------');
+
+const bodyEl = document.querySelector('body');
+
+function findElementByClass(DOMElement, nameClass) {
+  DOMElement.firstElementChild.className === nameClass
+    ? console.log(DOMElement.firstElementChild)
+    : findElementByClass(DOMElement.firstElementChild, nameClass);
+}
+
+findElementByClass(bodyEl, 'class3');
 
 // --------------------------------------------------------------------
