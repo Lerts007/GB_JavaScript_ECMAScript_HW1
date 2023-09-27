@@ -61,9 +61,20 @@ console.log('-------------------------------------------------------------------
 const bodyEl = document.querySelector('body');
 
 function findElementByClass(DOMElement, nameClass) {
-  DOMElement.firstElementChild.className === nameClass
-    ? console.log(DOMElement.firstElementChild)
-    : findElementByClass(DOMElement.firstElementChild, nameClass);
+  if (DOMElement.childElementCount === 0) {
+    console.log('Дети закончались)))');
+  } else if (DOMElement.childElementCount > 1) {
+    for (let i = 0; i < DOMElement.childElementCount; i++) {
+      if (findElementByClass(DOMElement.children[i], nameClass)) {
+        return true;
+      }
+    }
+  } else if (DOMElement.firstElementChild.className === nameClass) {
+    console.log(DOMElement.firstElementChild);
+    return true;
+  } else {
+    findElementByClass(DOMElement.firstElementChild, nameClass);
+  }
 }
 
 findElementByClass(bodyEl, 'class3');
